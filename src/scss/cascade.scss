@@ -1,31 +1,43 @@
-@mixin foobar {
+@mixin gazonk {
     background: yellow;
 }
 
-p {
-    @extend %inline-block;
-    @extend %p-color;
+.foobar {
+    box-sizing: border-box;
+}
 
-    @include foobar;
+p {
+    @extend %abstract-block;
+    @extend %abstract-color;
+    @extend .foobar;
+
+    @include gazonk;
 
     position: relative;
+}
+
+// Div will be placed with every instance of p
+div {
+    @extend p;
+
+    display: table;
 }
 
 p {
     display: block;
 }
 
-/* All selectors extending this silent class will be placed in a comma separated list and then
-    replace this silent class */
-%p-color {
+// All selectors extending this silent class will be placed in
+// a comma separated list and then replace this silent class
+%abstract-color {
     color: blue;
 }
 
-%inline-block {
+%abstract-block {
     display: inline-block;
     vertical-align: top;
 
-    @include foobar;
+    @include gazonk;
 }
 
 p {
@@ -33,7 +45,7 @@ p {
 }
 
 a {
-    @extend %inline-block;
+    @extend %abstract-block;
 
     font-size: 2em;
 }
