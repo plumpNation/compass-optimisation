@@ -1,0 +1,35 @@
+/* line 5, ../scss/cascade.scss */
+p {
+  /* for each extend, a new p {} will be created, they are not grouped */
+  background: yellow;
+  position: relative;
+}
+
+/* line 15, ../scss/cascade.scss */
+p {
+  display: block;
+}
+
+/* All selectors extending this silent class will be placed in a comma separated list and then
+    replace this silent class */
+/* line 21, ../scss/cascade.scss */
+p {
+  color: blue;
+}
+
+/* line 25, ../scss/cascade.scss */
+p, a {
+  display: inline-block;
+  vertical-align: top;
+  background: yellow;
+}
+
+/* line 32, ../scss/cascade.scss */
+p {
+  color: red;
+}
+
+/* line 36, ../scss/cascade.scss */
+a {
+  font-size: 2em;
+}

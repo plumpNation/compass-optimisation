@@ -1,14 +1,16 @@
 'use strict';
 
 module.exports = function (grunt) {
-    var // The main grunt config
+    var srcDir = './src/',
+
+        // The main grunt config
         gruntConfig = {
 
             // https://github.com/gruntjs/grunt-contrib-watch
             watch: {
                 // A small watcher to compile sass while you work.
                 css: {
-                    files: config.srcDir + '/scss/**/*.scss',
+                    files: srcDir + 'scss/**/*.scss',
                     tasks: 'compass'
                 }
             },
@@ -17,12 +19,12 @@ module.exports = function (grunt) {
                 options: {
                     config: 'scss-lint.yml',
                     bundleExec: true,
-                    colorizeOutput: true,
-                    reporterOutput: config.moduleDir + 'metrics/reports/scss-lint.xml',
+                    colorizeOutput: true
+                    // reporterOutput: './scss-lint.xml',
                 },
 
                 src: [
-                    config.srcDir + 'scss/**/*.scss',
+                    srcDir + 'scss/**/*.scss',
                 ]
             },
 
@@ -36,7 +38,7 @@ module.exports = function (grunt) {
 
                 // autoprefixed css only exists in the build directory at the moment.
                 build: {
-                    src: '**/*.css'
+                    src: srcDir + '**/*.css'
                 }
             },
 
@@ -46,12 +48,12 @@ module.exports = function (grunt) {
                     options: {
                         bundleExec: true,
                         config: 'config.rb',
-                        sassDir: config.srcDir + '/scss',
-                        cssDir: config.srcDir + '/css',
+                        sassDir: srcDir + 'scss',
+                        cssDir: srcDir + 'css',
 
                         // https://gist.github.com/passy/5270050
                         // Reading materials...
-                        imagesDir: config.srcDir + '/images'
+                        imagesDir: srcDir + 'images'
                     }
                 }
             }

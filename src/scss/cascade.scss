@@ -1,0 +1,39 @@
+@mixin foobar {
+    background: yellow;
+}
+
+p {
+    @extend %inline-block;
+    @extend %p-color;
+
+    @include foobar;
+
+    position: relative;
+}
+
+p {
+    display: block;
+}
+
+/* All selectors extending this silent class will be placed in a comma separated list and then
+    replace this silent class */
+%p-color {
+    color: blue;
+}
+
+%inline-block {
+    display: inline-block;
+    vertical-align: top;
+
+    @include foobar;
+}
+
+p {
+    color: red;
+}
+
+a {
+    @extend %inline-block;
+
+    font-size: 2em;
+}
